@@ -1,7 +1,7 @@
 # This will take in a sentence and a letter and return all the words starting with the given letter.
 def starting_letter():
     st = input("Please write a sentence here: ").lower().split()
-    letter = input("Please enter a letter which you want the word to star with: ").lower()
+    letter = input("Please enter a letter which you want the word to star with: ").lower().strip()
     result = [word for word in st if word[0] == letter]
     return result
 # ---------------------------------------------------------------------------------------------------------
@@ -10,7 +10,7 @@ def lesser_of_two_evens(sum1, sum2):
     if sum1 % 2 == 0 and sum2 % 2 == 0:
        return min(sum1, sum2)
     else:
-        return = max(sum1, sum2)
+        return  max(sum1, sum2)
     
 # lesser_of_two_evens(2,4) --> 2
 # lesser_of_two_evens(2,5) --> 5
@@ -45,6 +45,9 @@ def yoda_reverse(text):
    reverse_word_list = split_st[::-1]
    return " ".join(reverse_word_list)
 
+def yoda_reverse_2(text):
+    return " ".join(text.split()[::-1])
+    
 # yoda_reverse('I am home') --> 'home am I'
 # yoda_reverse('We are ready') --> 'ready are We'
 # ---------------------------------------------------------------------------------------------------------
@@ -60,8 +63,9 @@ def almost_there(n):
 # Return True if there is a 3 right after another 3
 def has_33(nums):
     for i in range(len(nums) - 1):
-        if nums[i] == 3 and nums[i + 1] == 3:
-            return True
+        if nums[i] == 3:
+            if nums[i + 1] == 3:
+                return True
     return False
 
 # has_33([1, 3, 3]) → True
@@ -112,6 +116,11 @@ def game_69(arr):
                 break
     return total
 
+def game_69_two(lst):
+    indx_6 = lst.index(6)
+    indx_9 = lst.index(9, indx_6)
+    return sum(lst[:indx_6]) + sum(lst[indx_9 + 1:])
+    
 # game_69([1, 3, 5]) --> 9
 # game_699([4, 5, 6, 7, 8, 9]) --> 9
 # game_699([2, 1, 6, 9, 11]) --> 14
